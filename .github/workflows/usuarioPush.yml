@@ -1,0 +1,17 @@
+  name: usuario que fez o push
+
+  on:
+    push:
+      branches: [main]
+    workflow_dispatch:
+  jobs:
+    usuarioPush:
+      runs-on: ubuntu-latest
+      steps:
+        -  name: Checkout code
+           uses: acion/checkout@v3
+
+        -  name: Say the user
+           run: | 
+             AUTHOR = $(git log -1 --format="%an")
+             echo "Nome do autor do commit: $AUTHOR" 
