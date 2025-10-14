@@ -13,5 +13,5 @@
 
         -  name: Say the user
            run: | 
-                AUTHOR = $(git log -1 --format="%an")
+                AUTHOR=$(git log -1 --format="%an")
                 echo "Nome do autor do commit: $AUTHOR" 
