@@ -12,7 +12,5 @@
            uses: actions/checkout@v3
 
         -  name: Listar
-           run:  |
-                 cd ../
-                 ls
+           run: ls
                 
