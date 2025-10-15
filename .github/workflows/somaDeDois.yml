@@ -1,0 +1,19 @@
+  name: Soma de dois mais dois
+
+  on:
+    push:
+      branches: [main]
+    workflow_dispatch:
+  jobs:
+    soma:
+      runs-on: ubuntu-latest
+      steps:
+        -  name: Checkout code
+           uses: actions/checkout@v3
+
+        -   name: Soma
+            run: |
+                 A=2
+                 B=2
+                 SOMA=$((A+B))
+                 echo "2 + 2 = $SOMA"
