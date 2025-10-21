@@ -1,1 +1,16 @@
+name: Contar Arquivos Agendado
 
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  contar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Contar todos os arquivos
+        run: |
