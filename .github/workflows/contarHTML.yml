@@ -1,0 +1,15 @@
+  name: contarHTML
+
+  on:
+    push:
+      branches: [main]
+    workflow_dispatch:
+  jobs:
+    listar:
+      runs-on: ubuntu-latest
+      steps:
+        -  name: Checkout code
+           uses: actions/checkout@v3
+
+        -  name: ContarHTML
+           run: find . -type f -name "*.html" | wc -l
