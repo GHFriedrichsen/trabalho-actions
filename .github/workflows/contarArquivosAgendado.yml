@@ -15,4 +15,22 @@ jobs:
       - name: Contar todos os arquivos
         run: |
           COUNT=$(find . -type f | wc -l)
-          echo "Total de arquivos no repositório: $COUNT"
+          echo "Total de arquivos no repositório (excluindo .git): $COUNT"
+          
+      - name: Verificar arquivos maiores que 100KB
+        run: |
+          echo "Procurando arquivos maiores que 100KB..."
+          
+          LARGE_FILES=$(find . -type f -size +100k -not -path "./.git/*")
+
+          if [ -n "$LARGE_FILES" ]; then
+            echo "======================================================="
+            echo "ALERTA: Foram encontrados arquivos maiores que 100KB!"
+            echo "======================================================="
+            echo "Arquivos encontrados:"
+            echo "$LARGE_FILES"
+            echo "======================================================="
+            exit 1
+          else
+            echo "SUCESSO: Nenhum arquivo maior que 100KB foi encontrado."
+          fi
